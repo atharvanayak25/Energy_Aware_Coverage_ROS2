@@ -1,0 +1,46 @@
+# SAR Coverage Control Parameters
+# Based on: Derenick, Michael, Kumar (IROS 2011)
+
+coverage_controller:
+  ros__parameters:
+    # Number of drones
+    num_drones: 3
+    
+    # Flight parameters
+    flight_altitude: 5.0  # meters
+    max_velocity: 2.0     # m/s
+    sensor_radius: 2.0    # meters
+    
+    # Search region Q bounds
+    region_xmin: -10.0
+    region_xmax: 10.0
+    region_ymin: -10.0
+    region_ymax: 10.0
+    
+    # Control gains (from paper)
+    gamma: 1.0       # Control gain
+    kappa: 1.0       # Convergence rate
+    gamma_alpha: 10.0  # Sigmoid steepness (higher = sharper transition)
+    
+    # Voltage thresholds
+    v_full: 12.6     # Full battery (3S LiPo)
+    v_safe: 11.0     # Start transitioning to dock
+    v_critical: 10.0 # Emergency return threshold
+    v_empty: 9.0     # Empty battery
+    
+    # Battery simulation
+    use_sim_battery: true
+    flight_time: 600.0   # seconds until empty (10 min)
+    charge_time: 120.0   # seconds to full charge (2 min)
+    
+    # Base stations [x, y] - outside region Q
+    base_stations:
+      - [-15.0, -8.0]
+      - [-15.0, 0.0]
+      - [-15.0, 8.0]
+    
+    # Entry points [x, y] - on boundary of Q
+    entry_points:
+      - [-10.0, -8.0]
+      - [-10.0, 0.0]
+      - [-10.0, 8.0]
