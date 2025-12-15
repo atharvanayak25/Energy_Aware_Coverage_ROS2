@@ -36,14 +36,14 @@ pip3 install numpy scipy shapely matplotlib
 ### Build and Run
 ```bash
 cd ~/ws_sar
-colcon build --packages-select sar_coverage --symlink-install
+colcon build --packages-select coverage_system --symlink-install
 source install/setup.bash
 
 # Terminal 1: Launch system
-ros2 launch sar_coverage sar_system.launch.py
+ros2 launch sar_coverage coverage_system.launch.py
 
 # Terminal 2: Test odometry
-python3 scripts/dummy_odom.py
+python3 scripts/dummy_odom_with_docking.py
 
 # Terminal 3: Visualize
 rviz2  # Add /coverage/drone_markers and /coverage/voronoi_cells
